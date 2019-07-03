@@ -12,6 +12,13 @@ btn.addEventListener("click", function() {
   );
 
   OurRequest.onload = function() {
+      // Bad server
+      if (OurRequest.status >= 200 && OurRequest.status < 400) {
+        var ourData = JSON.parse(OurRequest.responseText);
+        renderHTML(ourData);
+      } else {
+        console.log("");
+      }
     var ourData = JSON.parse(OurRequest.responseText);
     renderHTML(ourData);
   };
